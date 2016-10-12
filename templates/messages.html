@@ -1,0 +1,28 @@
+<ion-view >
+	<ion-nav-title ui-sref="leftdrawer.home">
+		<div class=" appLogo"></div>
+	</ion-nav-title>
+	<ion-nav-buttons side="left">
+		<button  class="button button-icon ion-ios-arrow-back button-clear button-tap-area" nav-direction="back" ui-sref="leftdrawer.home"></button>
+
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<button  class="button button-clear button-dark" ng-if="cart.products" ng-click="editCart()">{{editStatus}}</button>
+	</ion-nav-buttons>
+	<ion-content click-for-options-wrapper class="calm-bg cart-view">
+		<div class="header-space"></div>
+		<div class="panel" ng-if="notifications" ng-repeat="notification in notifications | orderBy:'date':true">
+			<div class="panel-body cart-summary">
+				<div class="item item-divider">
+					{{notification.title}}<br>
+					{{notification.date | date:'dd-MMM-yy HH:mm'}}
+				</div>
+				<div class="item item-text-wrap">
+					{{notification.message}}
+				</div>
+			</div>
+		</div>
+		<h3 ng-if="!notifications">NO MESSAGES</h3>
+		<div class="footer-space"></div>
+	</ion-content>
+</ion-view>

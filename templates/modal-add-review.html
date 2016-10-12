@@ -1,0 +1,24 @@
+<div class="modal" style="height:70%">
+	<ion-header-bar>
+		<h1 class="title">Add review</h1>
+		<button class=" button button-clear " ng-click="closeReviewModal()">Close</button>
+	</ion-header-bar>
+
+
+	<ion-content scroll="false">
+
+			<div>
+				<stars-rating class="add-rating" ng-model="review.rating" readonly="false" ng-click="rateFunction(review.rating)"></star-rating>
+			</div>
+		<div class="list list-review" style="height:60%">
+			<label class="item item-input">
+				<input type="text" ng-model="review.name" placeholder="Name">
+			</label>
+			<label class="item item-input item-textarea">
+				<textarea ng-model="review.text" placeholder="Review"></textarea>
+			</label>
+		</div>
+
+		<button class="button button-outline button-light button-custom " ng-click="sendReview(review)">Done</button>
+	</ion-content>
+</div>

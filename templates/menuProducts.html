@@ -1,0 +1,51 @@
+<ion-view>
+	<ion-nav-title ui-sref="leftdrawer.home">
+		<div class=" appLogo"></div>
+	</ion-nav-title>
+	<ion-nav-buttons side="left">
+		<button class="button button-icon button-clear ion-ios-arrow-back button-tap-area" nav-direction="back" ng-click="goBack()"></button>
+	</ion-nav-buttons>
+
+	<ion-nav-buttons side="right"  class="customAnim">
+		<button class=" button button-icon ion-ios-cart" nav-direction="forward" ui-sref="cart" ></button>
+		<span ng-if="cartBadge>0" class="badge badge-calm " ui-sref="cart">{{cartBadge}}</span>
+	</ion-nav-buttons>
+	<ion-header-bar class="bar bar-subheader sort-header">
+		<div class="button-bar sort-bar">
+			<a class="button sort-button" ng-click="showSortDropdown($event)">Sort</a>
+			<a class="button sort-button" ng-click="showOrderDropdown($event)">Order</a>
+			<a class="button sort-button" >{{products.length}} products</a>
+		</div>
+	</ion-header-bar>
+	<ion-content class="calm-bg">
+		<div class="header-space"></div>
+		<div class="container products-page-container" style="width:{{viewportWidth/2 - 15}}px; height:{{viewportWidth/2 +50}}px"
+			 ng-class="{'margin-bottom-space':$last}"
+			 ng-repeat="product in products"
+			 ng-click="goToProduct(product.product_id, $event)">
+			<div class="row-photo" >
+				<img class="product-photo" ng-src="{{product.thumb_image}}"/>
+				<!--					<div class="product-discount">{{product.name}}</div>-->
+				<!--					<div class="product-favourites">{{product.productPrice}}</div>-->
+				<i class="fa fa-ellipsis-v fa-2x add-to-whishlist" ng-click="openPopover(product.product_id, $event)"></i>
+			</div>
+			<div class="row-text">
+				<div class="product-title">{{product.name}}</div>
+			</div>
+			<div class="middle-row">
+				<stars-rating  class="product-rating" ng-model="product.rating" readonly="true"></star-rating>
+			</div>
+			<div class="row-text" ng-show="{{product.special!==null}}">
+				<div class="product-old-price"><span>{{product.price}}</span></div>
+				<div class="product-price"><span>{{product.special}}</span></div>
+			</div>
+			<div class="row-text" ng-show="{{product.special===null}}">
+				<div class="product-old-price"><span></span></div>
+				<div class="product-price"><span>{{product.price}}</span></div>
+			</div>
+		</div>
+		<div class="footer-space"></div>
+	</ion-content>
+
+
+</ion-view>

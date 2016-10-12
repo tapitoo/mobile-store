@@ -1,0 +1,31 @@
+<ion-view>
+	<ion-nav-title ui-sref="leftdrawer.home">
+		<div class=" appLogo"></div>
+	</ion-nav-title>
+	<ion-nav-buttons side="left">
+		<button class="button button-icon button-clear ion-ios-arrow-back button-tap-area" nav-direction="back" ui-sref="leftdrawer.home">
+		</button>
+	</ion-nav-buttons>
+
+	<ion-nav-buttons side="right"  class="customAnim">
+		<button class=" button button-icon ion-ios-cart " nav-direction="forward" ui-sref="cart" ></button>
+		<span ng-if="cartBadge>0" class="badge badge-calm " ui-sref="cart">{{cartBadge}}</span>
+	</ion-nav-buttons>
+	<ion-content class="calm-bg">
+		<div class="cart-view">
+			<h3>Settings</h3>
+		</div>
+
+		<ion-toggle toggle-class="toggle-assertive"
+					ng-model="pushNotification.checked"
+					ng-change="pushNotificationChange()">
+			Receive Push Notifications
+		</ion-toggle>
+	</ion-content>
+	<div class="footer-space"></div>
+
+</ion-view>
+
+
+
+

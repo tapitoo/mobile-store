@@ -1,0 +1,72 @@
+<ion-view align-title="left" title='<div class="appLogo"></div>'>
+    <ion-nav-buttons side="left">
+        <!--		<span ng-click="toggleDrawer()" class="button-tap-area">-->
+        <button class="button button-icon button-clear ion-navicon button-tap-area"  ng-click="toggleDrawer()">
+        </button>
+        <!--		</span>-->
+    </ion-nav-buttons>
+
+    <ion-nav-buttons side="right"  class="customAnim">
+        <button class=" button button-icon ion-ios-cart" nav-direction="forward" ui-sref="cart" ></button>
+        <span ng-if="cartBadge>0" class="badge badge-calm" ui-sref="cart">{{cartBadge}}</span>
+    </ion-nav-buttons>
+
+    <ion-content class="calm-bg home-view-content" scroll="true"  delegate-handle="mainScroll">
+        <ion-slide-box class="photo-slider"
+                       show-pager="true"
+                       slide-interval="3000"
+                       disable-scroll="false"
+                       auto-play="true"
+                       does-continue="true">
+            <ion-slide ng-repeat="slide in slides" ng-click="goToBannerLink(slide)">
+                <img class="slide-photo" ng-src="{{slide.image}}">
+            </ion-slide>
+        </ion-slide-box>
+        <div class="row welcome-row">
+            <div class="col-50 welcome-col">
+                <button translate="homeview.discounts" class="button button-outline button-light button-custom discount-button order-search" nav-direction="forward" ng-click="getSpecial()">
+                    Discounts
+                </button>
+            </div>
+            <div class="col-50 welcome-col">
+                <button translate="homeview.brands" class="button button-outline button-light button-custom brands-button order-search" ui-sref="leftdrawer.manufacturers" >
+                    Manufacturers
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <button translate="homeview.browse_categories" class="button button-outline button-light button-custom categories-browse" nav-direction="forward" ui-sref="leftdrawer.categories">
+                Browse by categories
+            </button>
+        </div>
+        <div ng-if="c.category.products.length>0" ng-repeat="c in featuredCategories">
+            <h3>{{c.category.name}}</h3>
+            <div style="margin:5px;">
+                <ion-scroll class="product-scroll" direction="x" has-bouncing="false" zooming="false" style="width: 99%; height: 200px ;margin-left:0.5%; margin-right:0.5%;" scrollbar-x="false" scrollbar-y="false" delegate-handle="prodScrollDelegate{{c.category.category_id}}" horizontal-scroll-fix="mainScroll">
+                    <div style="width:{{(130 * c.category.products.length)}}px; height:200px;">
+                        <div class="container product-scroll-container" ng-repeat="product in c.category.products" ng-click="goToProduct(product.product_id, $event)">
+                            <div class="row-photo" >
+                                <img class="product-photo" ng-src="{{product.thumb_image}}"/>
+                                <!--					<div class="product-discount">{{product.name}}</div>-->
+                                <i class="fa fa-ellipsis-v fa-2x add-to-whishlist" ng-click="openPopover(product.product_id,$event)"></i>
+                            </div>
+                            <div class="row-text">
+                                <div class="product-title">{{product.name}}</div>
+                            </div>
+                            <div class="row-text" ng-show="{{product.special!==null}}">
+                                <div class="product-old-price"><span>{{product.price}}</span></div>
+                                <div class="product-price"><span>{{product.special}}</span></div>
+                            </div>
+                            <div class="row-text" ng-show="{{product.special===null}}">
+                                <div class="product-old-price"><span></span></div>
+                                <div class="product-price"><span>{{product.price}}</span></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </ion-scroll>
+            </div>
+        </div>
+        <div class="margin-bottom"></div>
+    </ion-content>
+</ion-view>

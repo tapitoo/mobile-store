@@ -1,0 +1,40 @@
+<ion-view title='<div class=" appLogo"></div>'>
+	<ion-nav-buttons side="left">
+		<button  class="button button-icon ion-ios-arrow-back button-clear button-tap-area" nav-direction="back" ng-click="goBack()"></button>
+	</ion-nav-buttons>
+	<ion-content class="calm-bg cart-view">
+		<div class="header-space"></div>
+		<h3>Shipping Address</h3>
+		<div class="panel">
+			<div class="panel-body account-panel delivery-panel">
+				<ul class="list">
+					<label class="item" ui-sref="newAddress">
+						<div class="item-content add-new-button">
+							<h2>ADD A NEW ADDRESS</h2>
+						</div>
+					</label>
+					<label class="item item-radio" ng-repeat="address in deliveryData" ng-click="chooseAddress(address)">
+						<input type="radio" name="group" ng-checked="address.checked">
+						<i class="radio-icon ion-checkmark"></i>
+						<div class="item-content">
+							<h2>{{address.address_1}}</h2>
+							<p>{{address.city}}, {{address.country}}</p>
+						</div>
+
+					</label>
+				</ul>
+			</div>
+		</div>
+
+		<div class="footer-space"></div>
+
+	</ion-content>
+
+	<ion-footer-bar class="bar-stable custom-footer fade-in-up" >
+		<div class="row">
+			<div class="col col-20"></div>
+			<div class="col"><button translate="" class="button button-calm footer-button" nav-direction="forward" ng-click="setShippingAddress()">Continue</button></div>
+			<div class="col col-20"></div>
+		</div>
+	</ion-footer-bar>
+</ion-view>

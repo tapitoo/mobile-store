@@ -1,0 +1,63 @@
+<ion-view>
+	<ion-nav-title ui-sref="leftdrawer.home">
+		<div class=" appLogo"></div>
+	</ion-nav-title>
+	<ion-nav-buttons side="left">
+		<button  class="button button-icon ion-ios-arrow-back button-clear button-tap-area" nav-direction="back" ui-sref="cart" ng-click="exitCheckout()"></button>
+	</ion-nav-buttons>
+	<ion-content class="calm-bg cart-view">
+		<div class="header-space"></div>
+
+		<div class="panel">
+			<div class="panel-body account-panel">
+				<div class="list">
+					<div class="item item-icon-left item-icon-right" nav-direction="forward" ui-sref="accountDetails">
+						<i class="icon ion-person"></i>
+						<h2>Contact Details</h2>
+						<p>{{account.firstname}} {{account.lastname}}</p>
+						<i class="icon ion-ios-arrow-right"></i>
+					</div>
+					<div class="item item-icon-left item-icon-right" nav-direction="forward" ui-sref="paymentAddress">
+						<i class="icon icon-truck fa-flip-horizontal fa-lg"></i>
+						<h2>Delivery Information</h2>
+						<p ng-if="!address">Select delivery address</p>
+						<p ng-if="address">{{address.address_1}}</p>
+						<i class="icon ion-ios-arrow-right"></i>
+					</div>
+					<div ng-if="$rootScope.shipping_status === true" nav-direction="forward" class="item item-icon-left item-icon-right" ui-sref="shippingMethod">
+						<i class="icon icon-truck fa-flip-horizontal fa-lg"></i>
+						<h2>Delivery Method</h2>
+						<p ng-if="!shipping">Select delivery address</p>
+						<p ng-if="shipping">{{shipping.title}}</p>
+						<i class="icon ion-ios-arrow-right"></i>
+					</div>
+					<div class="item item-icon-left item-icon-right" nav-direction="forward" ui-sref="paymentDetails">
+						<i class="icon ion-card"></i>
+						<h2>Payment Method</h2>
+						<p ng-if="!payment">Select payment type</p>
+						<p ng-if="payment">{{payment.title}}</p>
+						<i class="icon ion-ios-arrow-right"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel">
+			<div class="panel-body cart-summary">
+				<h3>Order Summary</h3>
+				<div class="row" ng-repeat="total in cart.totals">
+					<div class="col col-67" ng-class="{'total-price': total.title === 'Total'}">{{total.title}}</div>
+					<div class="col col-33" ng-class="{'total-price': total.title === 'Total'}">{{total.text}}</div>
+				</div>
+
+				<button class="button button-outline button-light button-custom margin-button" ng-click="checkout()"> Confirm Order </button>
+
+			</div>
+		</div>
+
+		<div class="footer-space"></div>
+
+	</ion-content>
+
+
+</ion-view>

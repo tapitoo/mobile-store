@@ -1,0 +1,48 @@
+<ion-view>
+	<ion-nav-title ui-sref="leftdrawer.home">
+		<div class=" appLogo"></div>
+	</ion-nav-title>
+	<ion-nav-buttons side="left">
+		<button class="button button-icon button-clear ion-ios-arrow-back button-tap-area" nav-direction="back" ng-click="goBack()"></button>
+	</ion-nav-buttons>
+
+
+	<ion-content class="calm-bg review-slide">
+		<div style="padding-bottom:20px"></div>
+		<div ng-if="reviews.length>0">
+			<div class="row">
+				<div class="col col-25 stars-average"><span style="font-size:22px">{{productRating}}</span><br><span>out of 5 stars</span></div>
+				<div class="col col-50">
+					<stars-rating class="product-review" ng-model="productRating" readonly="true"></star-rating><br/>
+				</div>
+				<div class="col col-25"><button class="button button-outline add-review-button" ng-click="openReviewModal()">Add review</button></div>
+			</div>
+
+			<div class="row" ng-repeat="star in stars.slice().reverse()">
+				<div class="col col-20"><span style="color:white; font-size:13px " >{{star.rating}} stars </span></div>
+				<div class="col col-50"><progress max="{{maxRatingValue}}" ng-value="{{star.value}}"></progress></div>
+				<div class="col"><span style="color:white; " >{{star.value}}</span></div>
+			</div>
+			<br>
+			<div ng-repeat="review in reviews">
+				<div class="panel">
+					<div class="panel-body panel-attributes">
+						<div>
+							<stars-rating ng-model="review.rating" readonly="true"></star-rating><br/>
+						</div>
+						<span>{{review.date_added}}</span>
+						<span> by {{review.author}}</span>
+						<div class="review-text">{{review.text}}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div ng-if="reviews.length === 0">
+			<h3>NO REVIEWS</h3>
+			<div style="text-align:center;">
+				<button class="button button-outline center-button" ng-click="openReviewModal()">Add review</button>
+			</div>
+		</div>
+		<div style="padding-top:140px"></div>
+	</ion-content>
+</ion-view>

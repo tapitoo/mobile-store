@@ -1,0 +1,41 @@
+<ion-view>
+	<ion-nav-title ui-sref="leftdrawer.home">
+		<div class=" appLogo"></div>
+	</ion-nav-title>
+	<ion-nav-buttons side="left">
+		<button  class="button button-icon ion-ios-arrow-back button-clear button-tap-area" nav-direction="back" ng-click="goBack()"></button>
+	</ion-nav-buttons>
+
+	<ion-content class="calm-bg" scroll="false">
+		<div class="header-space"></div>
+		<ion-list>
+			<div class="user-register">
+
+				<button class="button icon-left button-outline button-clear " style="width:100%; font-family:UnitedSans" ng-click="getUserLocation()"> Get location </button>
+				<label class="item item-input item-floating-label">
+					<span class="input-label">Address</span>
+					<input type="text" placeholder="Address" ng-model="address.address">
+				</label>
+				<label class="item item-input item-floating-label">
+					<span class="input-label">City</span>
+					<input type="text" placeholder="City" ng-model="address.city">
+				</label>
+				<label class="item item-input item-floating-label">
+					<span class="input-label">Postcode</span>
+					<input type="text" placeholder="Postcode" ng-model="address.postcode">
+				</label>
+				<label class="item item-input item-floating-label" ng-click="openModalCountry()">
+					<span class="input-label">Country</span>
+					<input readonly="true" type="text" placeholder="Country" ng-model="address.country_name">
+				</label>
+				<label class="item item-input item-floating-label" ng-click="openModalZoneID()">
+					<span class="input-label">Region/State</span>
+					<input readonly="true" type="text" placeholder="Region/State" ng-model="address.zone_name">
+				</label>
+				<br/>
+				<button class="button button-outline button-light button-custom" nav-direction="forward" ng-click="addNewAddress()"> Add address </button>
+			</div>
+
+		</ion-list>
+	</ion-content>
+</ion-view>

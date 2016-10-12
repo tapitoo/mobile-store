@@ -1,0 +1,61 @@
+<ion-view >
+	<ion-nav-title ui-sref="leftdrawer.home">
+		<div class=" appLogo"></div>
+	</ion-nav-title>
+	<ion-nav-buttons side="left">
+		<button  class="button button-icon ion-ios-arrow-back button-clear  button-tap-area" nav-direction="back" ui-sref="leftdrawer.home"></button>
+
+	</ion-nav-buttons>
+
+	<ion-content click-for-options-wrapper class="calm-bg cart-view">
+		<div class="header-space"></div>
+		<div  ng-if="cart.products">
+			<h3>Your Order</h3>
+			<ion-list   can-swipe="false" class="panel" ng-repeat="item in cartItems track by $index" >
+				<ion-item id="deleteAnimation" class="panel-body cart-panel-body deleteAnimation">
+					<div class="row">
+						<div class="col col-20">
+							<img class="cart-thumb" ng-src="{{item.thumb_image}}" alt="">
+						</div>
+						<div class="col col-50 ">
+							<span class="item-name">{{item.name}}</span><br>
+							<span ng-if="item.in_stock===false" class="item-name" style="font-size:10px; color:red">not in stock</span>
+						</div>
+						<div class="col col-30">
+							<div class="item-row">{{item.price}}</div><hr/>
+							<div class="row cart-edit-row">
+								<div class="col col-30"><button class="button-edit-cart" ng-click="editQuantity('add' ,item)">+</button></div>
+								<div class="col col-30 quantity-col">{{item.quantity}}</div>
+								<div class="col col-30"><button class="button-edit-cart" ng-click="editQuantity('subtract', item)">-</button></div>
+							</div>
+						</div>
+					</div>
+				</ion-item>
+			</ion-list>
+
+			<div class="panel">
+				<div class="panel-body cart-summary">
+					<h3>Order Summary</h3>
+					<div class="row" ng-repeat="total in cart.totals">
+						<div class="col col-67" ng-class="{'total-price': total.title === 'Total'}">{{total.title}}</div>
+						<div class="col col-33" ng-class="{'total-price': total.title === 'Total'}">{{total.text}}</div>
+					</div>
+					<button class="button button-outline button-light button-custom margin-button" nav-direction="forward" ng-click="cartCheckout()"> Checkout </button>
+				</div>
+			</div>
+		</div>
+
+		<ion-list ng-if="!cart.products">
+			<div class=" container goodbye-container" >
+				<p class="center" style="font-size:20px">				<span>Your cart is emtpy. Add some products and come back</span>
+				</p><br/>
+				<a translate = "order.ok" class="button button-outline button-custom margin-button" nav-direction="back" ui-sref="leftdrawer.home"><i class="icon-left "></i>OK</a><br/>
+			</div>
+		</ion-list>
+
+		<div class="footer-space"></div>
+
+	</ion-content>
+
+
+</ion-view>

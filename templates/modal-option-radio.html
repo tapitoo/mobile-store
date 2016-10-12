@@ -1,0 +1,31 @@
+<div class="modal" style="height:70%">
+	<ion-header-bar>
+		<h1 class="title">{{optionList.name}}</h1>
+	</ion-header-bar>
+	<ion-content scroll="false">
+		<ion-scroll style="height:80%"  >
+			<div class="list-inset list-custom" >
+				<label ng-show="{{optionList.type ==='radio' || optionList.type ==='select'}}" class="item item-radio item-custom" ng-repeat="element in optionList.product_option_value" >
+					<input type="radio" ng-model="$parent.elementName" value="{{element.name}}" ng-checked="element.checked" name="{{optionList.name}}" ng-click="addModifier(optionList, element)" >
+					<div class="item-content item-modifier" ng-click="addModifier(optionList, element)">
+						<img class="option-image" ng-src="{{element.image}}"/>
+						<div class="option-name" ng-class="{ 'add-image-margin': element.image }">{{element.name}}</div>
+						<div class="modifier-price" ng-class="{ 'add-image-margin': element.image }"><span ng-if="element.price">{{element.price_prefix}}</span>{{element.price}}</div>
+					</div>
+					<i class="radio-icon ion-checkmark" ng-class="{ 'add-image-margin': element.image }"></i>
+				</label>
+				<label ng-show="{{optionList.type ==='checkbox'}}" class="item item-radio item-custom"  ng-repeat="element in optionList.product_option_value" >
+					<input type="checkbox" ng-model="elementName" value="{{element.name}}" ng-checked="element.checked" name="{{modifier.name}}" ng-click="addModifier(optionList, element)" >
+					<div class="item-content item-modifier" ng-click="addModifier(optionList, element)">
+						<img class="option-image" ng-src="{{element.image}}"/>
+						<div class="option-name" ng-class="{ 'add-image-margin': element.image }">{{element.name}}</div>
+						<div class="modifier-price" ng-class="{ 'add-image-margin': element.image }"><span ng-if="element.price">{{element.price_prefix}}</span>{{element.price}}</div>
+					</div>
+					<i class="radio-icon ion-checkmark" ng-class="{ 'add-image-margin': element.image }"></i>
+				</label>
+
+			</div>
+		</ion-scroll>
+		<button class="button button-outline button-light button-custom " ng-click="closeModal()">Done</button>
+	</ion-content>
+</div>

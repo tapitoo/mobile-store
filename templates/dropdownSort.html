@@ -1,0 +1,21 @@
+<ion-popover-view class="product-popover">
+	<ion-content scroll="false" class="product-dropdown" ng-style="sortOptions === 'special' ? { 'height':'154px'} : { 'height': '193px' }" >
+		<div class="list">
+			<a class="item" ng-click="sort('price')">
+				By Price
+			</a>
+			<a class="item" ng-click="sort('name')">
+				By Name
+			</a>
+			<a class="item" ng-click="sort('rating')">
+				By Rating
+			</a>
+			<a class="item" ng-click="sort('model')">
+				By Model
+			</a>
+			<a class="item" ng-hide="sortOptions === 'special'" ng-click="sort('date_added')">
+				By Date Added
+			</a>
+		</div>
+	</ion-content>
+</ion-popover-view>

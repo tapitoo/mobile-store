@@ -1,0 +1,59 @@
+<ion-view title='{{"userinfo.personal_info" | translate}}'>
+	<ion-nav-buttons side="left">
+		<button  class="button button-icon ion-ios-arrow-back button-clear button-tap-area" nav-direction="back" ng-click="goBack()"></button>
+	</ion-nav-buttons>
+
+	<ion-content class="calm-bg">
+		<div class="header-space"></div>
+		<ion-list>
+			<div class="user-register">
+				<label class="item item-input item-floating-label">
+					<span class="input-label">First Name</span>
+					<input type="text" placeholder="First Name" ng-model="user.firstname">
+				</label>
+				<label class="item item-input item-floating-label">
+					<span class="input-label">Last Name</span>
+					<input type="text" placeholder="Last Name" ng-model="user.lastname">
+				</label>
+				<label class="item item-input item-floating-label">
+					<span class="input-label">Email</span>
+					<input type="text" placeholder="Email" ng-model="user.email">
+				</label>
+				<label class="item item-input item-floating-label">
+					<span class="input-label">Telephone</span>
+					<input type="text" placeholder="Telephone" ng-model="user.telephone">
+				</label>
+				<label class="item item-input item-floating-label">
+					<span class="input-label">Password</span>
+					<input type="password" placeholder="Password" ng-model="user.password">
+				</label>
+				<label class="item item-input item-floating-label">
+					<span class="input-label">Confirm password</span>
+					<input type="password" placeholder="Confirm password" ng-model="user.confirm">
+				</label>
+				<label class="item item-input item-floating-label">
+					<span class="input-label">Address</span>
+					<input type="text" placeholder="Address" ng-model="user.address_1">
+				</label>
+				<label class="item item-input item-floating-label">
+					<span class="input-label">Postcode</span>
+					<input type="text" placeholder="Postcode" ng-model="user.postcode">
+				</label>
+				<label class="item item-input item-floating-label">
+					<span class="input-label">City</span>
+					<input type="text" placeholder="City" ng-model="user.city">
+				</label>
+				<label class="item item-input item-floating-label" ng-click="openModalCountry()">
+					<span class="input-label">Country</span>
+					<input readonly="true" type="text" placeholder="Country" ng-model="user.country_name">
+				</label>
+				<label class="item item-input item-floating-label" ng-click="openModalZoneID()">
+					<span class="input-label">Region/State</span>
+					<input readonly="true" type="text" placeholder="Region/State" ng-model="user.zone_name">
+				</label>
+				<br/>
+				<button class="button button-outline button-light button-custom" ng-click="register()"> Create account </button>
+			</div>
+		</ion-list>
+	</ion-content>
+</ion-view>

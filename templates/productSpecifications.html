@@ -1,0 +1,29 @@
+<ion-view>
+	<ion-nav-title ui-sref="leftdrawer.home">
+		<div class=" appLogo"></div>
+	</ion-nav-title>
+	<ion-nav-buttons side="left">
+		<button class="button button-icon button-clear ion-ios-arrow-back button-tap-area" nav-direction="back" ng-click="goBack()"></button>
+	</ion-nav-buttons>
+
+	<ion-nav-buttons side="right"  class="customAnim">
+		<button class=" button button-icon ion-ios-cart" nav-direction="forward" ui-sref="cart" ></button>
+		<span ng-if="cartBadge>0" class="badge badge-calm " ui-sref="cart">{{cartBadge}}</span>
+	</ion-nav-buttons>
+	<ion-content class="calm-bg specification-slide">
+		<div style="padding-bottom:20px"></div>
+		<div ng-repeat="group in productDetails.attribute_groups">
+			<p class="group-name">{{group.name}}</p>
+			<div class="panel">
+				<div class="panel-body panel-attributes">
+					<div ng-repeat="attribute in group.attribute">
+						<div class="attribute-name">{{attribute.name}}</div>
+						<div class="attribute-text">{{attribute.text}}</div>
+						<hr ng-if="!$last"/>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div style="padding-top:140px"></div>
+	</ion-content>
+</ion-view>

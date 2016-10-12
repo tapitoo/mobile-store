@@ -1,0 +1,25 @@
+<ion-view title='{{"userinfo.personal_info" | translate}}'>
+	<ion-nav-buttons side="left">
+		<button  class="button-tap-area button button-icon ion-ios-arrow-back button-clear " nav-direction="back" ng-click="goBack()" ></button>
+	</ion-nav-buttons>
+
+	<ion-content class="calm-bg">
+		<div class="header-space"></div>
+		<ion-list>
+			<div class="panel-body user-login">
+				<label class="item item-input item-floating-label">
+					<span class="input-label">Email</span>
+					<input type="text" placeholder="Email" ng-model="user.email">
+				</label>
+				<label class="item item-input item-floating-label">
+					<span class="input-label">Password</span>
+					<input type="password" placeholder="Password" ng-model="user.password">
+				</label>
+				<br>
+				<button class="button button-outline button-light button-custom" ng-click="login()"> Login </button>
+				<button class="button button-outline button-light register-button " nav-direction="forward" ui-sref="leftdrawer.userRegister"> Register </button>
+				<button class="button button-outline button-light register-button " nav-direction="forward" ng-click="lostPassword()"> Lost password? </button>
+			</div>
+		</ion-list>
+	</ion-content>
+</ion-view>

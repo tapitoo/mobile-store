@@ -1,0 +1,18 @@
+<div class="modal" style="height:70%">
+	<ion-header-bar>
+		<h1 class="title">Choose Country</h1>
+	</ion-header-bar>
+	<ion-content>
+		<ion-scroll style="height:99%">
+			<div class="list list-custom" >
+				<div class="list" style="font-family:UnitedSans">
+					<a class="item item-icon-right" ng-repeat="country in countries" ng-click="chooseCountry(country)">
+						{{country.name}}
+						<i class="icon ion-ios-arrow-right"></i>
+					</a>
+				</div>
+
+			</div>
+		</ion-scroll>
+	</ion-content>
+</div>

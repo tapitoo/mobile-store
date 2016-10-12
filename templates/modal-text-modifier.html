@@ -1,0 +1,19 @@
+<div class="modal" style="height:auto">
+	<ion-header-bar>
+		<h1 class="title">{{selectedOption.name}}</h1>
+		<button class=" button button-clear " ng-click="closeModal()">Close</button>
+	</ion-header-bar>
+
+	<ion-content scroll="false">
+		<div class="list list-review" style="height:60%">
+			<label class="item item-input" ng-if="selectedOption.type==='text'" style="margin-top:20%">
+				<input type="text" ng-model="selectedOption.value" placeholder="Enter text here...">
+			</label>
+			<label class="item item-input item-textarea" ng-if="selectedOption.type==='textarea'"  style="margin-top:16%">
+				<textarea ng-model="selectedOption.value" placeholder="Enter text here..."></textarea>
+			</label>
+		</div>
+
+		<button class="button button-outline button-light button-custom " ng-click="closeModal()">Done</button>
+	</ion-content>
+</div>

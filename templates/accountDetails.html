@@ -1,0 +1,42 @@
+<ion-view>
+	<ion-nav-title ui-sref="leftdrawer.home">
+		<div class=" appLogo"></div>
+	</ion-nav-title>
+	<ion-nav-buttons side="left">
+		<button  class="button button-icon ion-ios-arrow-back button-clear button-tap-area" nav-direction="back" ng-click="goBack()"></button>
+	</ion-nav-buttons>
+
+	<ion-nav-buttons side="right"  class="customAnim">
+		<button class=" button button-icon ion-edit" ng-click="editAccount()" ></button>
+	</ion-nav-buttons>
+
+	<ion-content class="calm-bg account-view-content" scroll="true" >
+		<div class="header-space"></div>
+		<div class="panel">
+			<div class="list card panel-body account-panel" style="heigh:100%">
+				<div  class="item item-icon-left">
+					<i class="icon ion-person"></i>
+					<div ng-show="canEdit===true" >
+						First Name: <input  type="text" class="custom-input" ng-model="account.firstname">
+						Last Name: <input type="text" class="custom-input" ng-model="account.lastname">
+					</div>
+					<spam ng-show="canEdit===false">{{account.firstname}} {{account.lastname}}</spam>
+				</div>
+				<div  class="item item-icon-left">
+					<i class="icon ion-ios-telephone"></i>
+					<input ng-show="canEdit===true" type="text" class="custom-input" ng-model="account.telephone">
+					<spam ng-show="canEdit===false">{{account.telephone }}</spam>
+				</div>
+				<div  class="item item-icon-left">
+					<i class="icon ion-email"></i>
+					<input ng-show="canEdit===true" type="text" class="custom-input" ng-model="account.email">
+					<spam ng-show="canEdit===false">{{account.email}}</spam>
+				</div>
+			</div>
+			<br>
+			<button ng-if="canEdit === true"class="button button-outline button-light button-custom" ng-click="saveDetails()"> Save Details </button>
+
+		</div>
+		<div class="margin-bottom"></div>
+	</ion-content>
+</ion-view>

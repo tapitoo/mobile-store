@@ -1,0 +1,40 @@
+<ion-view >
+	<ion-nav-title ui-sref="leftdrawer.home">
+		<div class=" appLogo"></div>
+	</ion-nav-title>
+	<ion-nav-buttons side="left">
+		<button class="button button-icon button-clear ion-ios-arrow-back button-tap-area" nav-direction="back" ui-sref="leftdrawer.categories" >
+		</button>
+	</ion-nav-buttons>
+
+	<ion-nav-buttons side="right"  class="customAnim">
+		<button class=" button button-icon ion-ios-cart " nav-direction="forward" ui-sref="cart" ></button>
+		<span ng-if="cartBadge>0" class="badge badge-calm " ui-sref="cart">{{cartBadge}}</span>
+	</ion-nav-buttons>
+	<ion-content class="calm-bg">
+		<div class="row">
+			<div class="col col-75">
+				<div class="list list-inset search-input">
+					<label class="item item-input ">
+						<input type="text" placeholder="What would you like to find?" onfocus="this.placeholder = ''" onblur="this.placeholder = 'What would you like to find?'" ng-model="searchQuery">
+					</label>
+				</div>
+			</div>
+			<div class="col col-25">
+				<button class=" button button-outline search-button" nav-direction="forward" ng-click="search(searchQuery, 'subcategory')">Search</button>
+			</div>
+		</div>
+		<div class="list" style="font-family:UnitedSans">
+			<a class="item item-icon-right" ng-click="getProducts(category)">
+				All products
+				<i class="icon ion-ios-arrow-right"></i>
+			</a>
+			<a class="item item-icon-right" ng-repeat="category in subCategories" ng-click="getCategory(category)">
+				{{category.name}}
+				<i class="icon ion-ios-arrow-right"></i>
+			</a>
+		</div>
+	</ion-content>
+	<div class="footer-space"></div>
+
+</ion-view>

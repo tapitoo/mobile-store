@@ -1,0 +1,40 @@
+<ion-view align-title="left">
+	<ion-nav-title ui-sref="leftdrawer.home">
+		<div class=" appLogo"></div>
+	</ion-nav-title>
+	<ion-nav-buttons side="left">
+		<button  class="button button-icon ion-ios-arrow-back button-clear button-tap-area" nav-direction="back" ui-sref="leftdrawer.home"></button>
+	</ion-nav-buttons>
+
+	<ion-nav-buttons side="right"  class="customAnim">
+		<button class=" button button-icon ion-ios-cart" nav-direction="forward" ui-sref="cart" ></button>
+	</ion-nav-buttons>
+
+	<ion-content class="calm-bg account-view-content" scroll="true" >
+		<div class="header-space"></div>
+
+		<div class="panel">
+			<div class="panel-body account-panel">
+				<div class="list account-actions">
+					<div class="item item-icon-left item-icon-right" ui-sref="accountDetails">
+						<i class="icon ion-person fa-flip-horizontal "></i>
+						<h2>Account Details</h2>
+						<i class="icon ion-ios-arrow-right"></i>
+					</div>
+					<div class="item item-icon-left item-icon-right" ui-sref="editAddress">
+						<i class="icon icon-truck fa-flip-horizontal"></i>
+						<h2>Delivery Addreses</h2>
+						<i class="icon ion-ios-arrow-right"></i>
+					</div>
+					<div class="item item-icon-left item-icon-right" ui-sref="changePassword">
+						<i class="icon ion-lock-combination"></i>
+						<h2>Change Password</h2>
+						<i class="icon ion-ios-arrow-right"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+		<button class="button button-outline button-light logout-button" ng-click="logOut()">Log Out</button>
+		<div class="margin-bottom"></div>
+	</ion-content>
+</ion-view>

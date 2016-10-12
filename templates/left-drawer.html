@@ -1,0 +1,31 @@
+<ion-side-menus>
+
+	<ion-side-menu-content drag-content="false">
+		<ion-nav-view name="menuContent"></ion-nav-view>
+	</ion-side-menu-content>
+
+	<ion-side-menu width="200" side="left">
+		<ion-content scroll="false">
+			<ul class="list inset drawer-left" style="margin-bottom: 0px">
+				<a ng-show="account" class="item item-avatar custom-style" ui-sref="userAccount" menu-close>
+					<img src="./img/user1.png">
+					{{account.firstname}} {{account.lastname}}
+				</a>
+				<span ng-show="!account" class="item item-avatar custom-style" >
+					<img src="./img/user1.png">
+					<span class="drawer-login"  ng-click="userLogin()" menu-close>{{'drawer.login'| translate}}</span>
+					<span class="drawer-register"  ui-sref="leftdrawer.userRegister" menu-close>Register</span>
+				</span>
+				<!--				<a class="item item-icon-left custom-style" ng-click="logOut()" menu-close>Log out</a>-->
+				<a class="item item-icon-left custom-style" menu-close><i class="icon ion-ios-home"></i>{{'drawer.home'| translate}}</a>
+				<a class="item item-icon-left custom-style" ui-sref="leftdrawer.categories" menu-close><i class="icon ion-ios-search-strong"></i>{{'drawer.products'| translate}}</a>
+				<a class="item item-icon-left custom-style" ui-sref="wishlist" menu-close><i class="icon ion-heart"></i>{{'drawer.favourites'| translate}}</a>
+				<a class="item item-icon-left custom-style" ui-sref="cart" menu-close><i class="icon ion-ios-cart"></i>{{'drawer.cart'| translate}}</a>
+				<a class="item item-icon-left custom-style" ui-sref="messages" menu-close><i class="icon ion-email"></i>{{'drawer.messages'| translate}}</a>
+				<a class="item item-icon-left custom-style" ui-sref="settings" menu-close><i class="icon ion-gear-a"></i>{{'drawer.settings'| translate}}</a>
+			</ul>
+			<div class="drawer-fix"></div>
+		</ion-content>
+	</ion-side-menu>
+
+</ion-side-menus>

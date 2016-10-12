@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.tapitoo.opencart2010" version="1.1" versionCode="3" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+	<!--    com.tapitoo.PushApp          com.test.claimed            <widget id="com.tapitoo.PortalAdHoc" version="3.2.0" versionCode="146" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">-->
+	<name>Tapitoo OpenCart</name>
+	<content src="index.html"/>
+	<description>
+		Tapitoo	OpenCart
+	</description>
+	<author email="support@phonegap.com" href="http://phonegap.com">
+		GeekVillage Team
+	</author>
+	<feature name="http://api.phonegap.com/1.0/device" />
+	<feature name="http://api.phonegap.com/1.0/geolocation"/>
+	<feature name="http://api.phonegap.com/1.0/network"/>
+
+	<preference name="phonegap-version" value="3.5.0" />
+	<preference name="HideKeyboardFormAccessoryBar" value="true"/>
+	<preference name="DisallowOverscroll" value="true"/>
+	<preference name="orientation" value="portrait" />
+	<preference name="target-device" value="universal" />
+	<preference name="Fullscreen" value="true" />
+	<preference name="webviewbounce" value="false" />
+	<preference name="prerendered-icon" value="true" />
+	<preference name="stay-in-webview" value="false" />
+	<preference name="detect-data-types" value="false" />
+	<preference name="exit-on-suspend" value="false" />
+	<preference name="show-splash-screen-spinner" value="false" />
+	<preference name="auto-hide-splash-screen" value="false" />
+	<preference name="AutoHideSplashScreen" value="false" />
+	<preference name="SplashScreen" value="screen" />
+	<preference name="SplashScreenDelay" value="20000" />
+	<preference name="disable-cursor" value="false" />
+	<preference name="android-installLocation" value="auto" />
+	<preference name="android-windowSoftInputMode" value="adjustResize" />
+	<preference name="BackgroundColor" value="0xff222222"/>
+	<preference name="android-minSdkVersion" value="15" />
+
+	<icon src="icon.png" />
+	<icon gap:density="ldpi" gap:platform="android" src="res/icon/android/icon-36-ldpi.png" />
+	<icon gap:density="mdpi" gap:platform="android" src="res/icon/android/icon-48-mdpi.png" />
+	<icon gap:density="hdpi" gap:platform="android" src="res/icon/android/icon-72-hdpi.png" />
+	<icon gap:density="xhdpi" gap:platform="android" src="res/icon/android/icon-96-xhdpi.png" />
+	<icon gap:platform="blackberry" src="res/icon/blackberry/icon-80.png" />
+	<icon gap:platform="blackberry" gap:state="hover" src="res/icon/blackberry/icon-80.png" />
+	<icon gap:platform="ios" height="57" src="res/icon/ios/ios-57.png" width="57" />
+	<icon gap:platform="ios" height="72" src="res/icon/ios/ios-72.png" width="72" />
+	<icon gap:platform="ios" height="114" src="res/icon/ios/ios-57-2x.png" width="114" />
+	<icon gap:platform="ios" height="144" src="res/icon/ios/ios-72-2x.png" width="144" />
+	<icon gap:platform="webos" src="res/icon/webos/icon-64.png" />
+	<icon gap:platform="winphone" src="res/icon/windows-phone/icon-48.png" />
+	<icon gap:platform="winphone" src="res/icon/windows-phone/icon-48.png" />
+	<icon gap:platform="winphone" gap:role="background" src="res/icon/windows-phone/icon-62-tile.png" />
+	<icon gap:platform="winphone" gap:role="background" src="res/icon/windows-phone/icon-173-tile.png" />
+	<gap:splash gap:density="ldpi" gap:platform="android" src="res/screen/android/screen-ldpi-portrait.png" />
+	<gap:splash gap:density="mdpi" gap:platform="android" src="res/screen/android/screen-mdpi-portrait.png" />
+	<gap:splash gap:density="hdpi" gap:platform="android" src="res/screen/android/screen-hdpi-portrait.png" />
+	<gap:splash gap:density="xhdpi" gap:platform="android" src="res/screen/android/screen-xhdpi-portrait.png" />
+	<gap:splash gap:platform="blackberry" src="res/screen/blackberry/screen-225.png" />
+	<gap:splash gap:platform="ios" height="1136" src="res/screen/ios/screen-iphone-portrait-568h-2x.png"  width="640"  />
+	<gap:splash gap:platform="ios" height="480" src="res/screen/ios/screen-iphone-portrait.png" width="320" />
+	<gap:splash gap:platform="ios" height="960" src="res/screen/ios/screen-iphone-portrait-2x.png" width="640" />
+	<gap:splash gap:platform="ios" height="1024" src="res/screen/ios/screen-ipad-portrait.png" width="768" />
+	<gap:splash gap:platform="ios" height="768" src="res/screen/ios/screen-ipad-landscape.png" width="1024" />
+	<gap:splash gap:platform="winphone" src="res/screen/windows-phone/screen-portrait.jpg" />
+
+	<gap:plugin name="org.apache.cordova.network-information" />
+	<gap:plugin name="com.vliesaputra.deviceinformation" />
+	<gap:plugin name="org.apache.cordova.device" />
+	<gap:plugin name="org.apache.cordova.geolocation" />
+	<gap:plugin name="org.apache.cordova.dialogs" />
+	<gap:plugin name="org.apache.cordova.splashscreen" />
+	<gap:plugin name="org.apache.cordova.core.dialogs" />
+	<gap:plugin name="com.ionic.keyboard" version="1.0.3" />
+	<gap:plugin name="com.phonegap.plugin.statusbar" version="1.1.0" />
+	<gap:plugin name="org.apache.cordova.console" version="0.2.11" />
+	<gap:plugin name="onesignal-cordova-plugin-pgb-compat" source="npm" />
+	<gap:plugin name="cordova-plugin-googleplayservices" source="npm" />
+	<gap:plugin name="cordova-plugin-android-support-v4" source="npm" />
+
+	<!--	<gap:plugin name="com.ionic.keyboard" version="1.0.1" />
+<gap:plugin name="com.onesignal.plugins.onesignal" version="1.9.0" />
+<gap:plugin name="com.phonegap.plugin.statusbar" version="1.1.0" />
+<gap:plugin name="com.vliesaputra.deviceinformation" version="1.0.1" />
+<gap:plugin name="org.apache.cordova.console" version="0.2.11" />
+<gap:plugin name="org.apache.cordova.core.dialogs" version="0.2.10" />
+<gap:plugin name="org.apache.cordova.device" version="0.2.12" />
+<gap:plugin name="org.apache.cordova.dialogs" version="0.2.10" />
+<gap:plugin name="org.apache.cordova.geolocation" version="0.3.10" />
+<gap:plugin name="org.apache.cordova.network-information" version="0.2.12" />
+<gap:plugin name="org.apache.cordova.splashscreen" version="0.3.4" />
+-->
+
+	<gap:config-file platform="ios" parent="UIStatusBarHidden">
+		<true/>
+	</gap:config-file>
+
+	<gap:config-file platform="ios" parent="UIViewControllerBasedStatusBarAppearance">
+		<false/>
+	</gap:config-file>
+
+	<access origin="*" />
+	<access origin="http://185.16.40.144/" />
+	<access origin="http://127.0.0.1*" />
+	<access origin="google.com" />
+	<access origin="http://maps.google.com" />
+	<access origin="https://maps.googleapis.com" />
+
+</widget>

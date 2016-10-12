@@ -1,0 +1,44 @@
+button-tap-area<ion-view>
+	<ion-nav-title ui-sref="leftdrawer.home">
+		<div class=" appLogo"></div>
+	</ion-nav-title>
+	<ion-nav-buttons side="left">
+		<button  class="button button-icon ion-ios-arrow-back button-clear button-tap-area" nav-direction="back" ng-click="goBack()"></button>
+
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<button  class="button button-clear button-dark" ng-click="editAddress()">{{editStatus}}</button>
+	</ion-nav-buttons>
+	<ion-content click-for-options-wrapper class="calm-bg cart-view">
+		<div class="header-space"></div>
+		<h3>My Addresses</h3>
+		<div class="panel">
+			<div class="panel-body account-panel delivery-panel">
+				<ul class="list">
+					<label class="item" ui-sref="newAddress">
+						<div class="item-content add-new-button">
+							<h2>ADD A NEW ADDRESS</h2>
+						</div>
+					</label>
+					<label class="item item-radio" ng-repeat="address in deliveryData" >
+						<div class="row">
+							<div class="col col-80">
+								<div class="item-content" >
+									<h2>{{address.address_1}}</h2>
+									<p>{{address.city}}, {{address.country}}</p>
+								</div>
+							</div>
+							<div class="col col-20"  ng-if="canEdit === true" >
+								<button class="button button-icon icon ion-ios-trash delete-address"  ng-click="deleteAddress(address)"></button>
+							</div>
+						</div>
+					</label>
+				</ul>
+			</div>
+		</div>
+
+		<div class="footer-space"></div>
+	</ion-content>
+
+
+</ion-view>

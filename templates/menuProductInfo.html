@@ -1,0 +1,204 @@
+<ion-view>
+	<ion-nav-title ui-sref="leftdrawer.home">
+		<div class=" appLogo"></div>
+	</ion-nav-title>
+	<ion-nav-buttons side="left">
+		<button class="button button-icon button-clear ion-ios-arrow-back button-tap-area" nav-direction="back" ng-click="back()"></button>
+	</ion-nav-buttons>
+
+	<ion-nav-buttons side="right"  class="customAnim">
+		<button class=" button button-icon ion-ios-cart" nav-direction="forward" ui-sref="cart" ></button>
+		<span ng-if="cartBadge>0" class="badge badge-calm " ui-sref="cart">{{cartBadge}}</span>
+	</ion-nav-buttons>
+	<ion-content class="calm-bg product-page " scroll="false" >
+		<!--		<i class="fa fa-ellipsis-v fa-2x product-add-wishlist" ng-click="openPopover(product.product_id, $event)"></i>-->
+
+		<ion-scroll style="height:100%" delegate-handle="slide1Scroll" on-scroll="getCurrentPosition()" >
+			<i class=" button button-icon ion-heart product-add-wishlist" ng-click="addToWishlist(productDetails.product_id)"></i>
+
+			<ion-slide-box id="producPhotoSlideBox" class="product-photo-slider"
+						   show-pager="true"
+						   slide-interval="3000"
+						   disable-scroll="false"
+						   on-touch="disableTabSlide()"
+						   on-release="enableTabSlide()"
+						   on-drag-left="dragLastSlide()"
+						   delegate-handle="productSlideBox"
+						   ng-if="productDetails.images.length!==0">
+				<ion-slide ng-repeat="image in productDetails.images" >
+					<img class="slide-photo" ng-src="{{image.image}}">
+				</ion-slide>
+			</ion-slide-box>
+			<ion-slide-box id="producPhotoSlideBox" class="product-photo-slider"
+						   show-pager="true"
+						   slide-interval="3000"
+						   disable-scroll="false"
+						   on-touch="disableTabSlide()"
+						   on-release="enableTabSlide()"
+						   on-drag-left="goNextTabSlide()"
+						   delegate-handle="productSlideBoxOne"
+						   on-slide-changed="photoSlideDelegate()"
+						   ng-if="productDetails.images.length===0">
+				<ion-slide >
+					<img class="slide-photo" ng-src="{{productDetails.image}}">
+				</ion-slide>
+			</ion-slide-box>
+			<button translate="menu.add_to_cart"  id="cartButton" style="" class="button button-calm add-to-cart-button"  ng-click="addToCart(productDetails)">Add to cart</button>
+
+			<div class="panel">
+				<div class="panel-body product-info">
+					<div class="top-row">
+						<span class="product-title">{{productDetails.title}}</span>
+					</div>
+					<div class="middle-row">
+						<stars-rating ng-model="productDetails.rating" readonly="true"></star-rating>
+					</div>
+					<div class="bottom-row">
+						<div class="row">
+							<div class="col col-40 col-offset-60">
+								<div ng-if="productDetails.special!==null" class="product-old-price-right"><span>{{productDetails.price}}</span></div>
+								<div ng-if="productDetails.special===null" style="height:20px"></div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col col-20">
+								<span class="stock-status">{{productDetails.stock_status}}</span>
+							</div>
+							<div class="col col-40">
+								<div ng-if="productDetails.special!==null" class="product-price-right"><span>{{productDetails.special}}</span></div>
+								<div ng-if="productDetails.special===null" class="product-price-right"><span>{{productDetails.price}}</span></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<a class="item modifier-item item-icon-right" ng-repeat="option in productDetails.options"  ng-if="option.type==='radio' || option.type==='select' || option.type==='checkbox' || option.type==='text' || option.type==='textarea'" ng-click="openOptionModal(option); $event.stopPropagation();">
+				{{option.name}}
+				<span class="item-note"  ng-if="option.type==='radio' || option.type==='select' || option.type==='checkbox'" ng-show="!option.selectedOption || option.selectedOption.length === 0">
+					 Choose an option
+				</span>
+				<span class="item-note" ng-if="option.type==='radio' || option.type==='select'" ng-show="option.selectedOption"> {{option.selectedOption.name}} </span>
+				<span class="item-note" ng-if="option.type==='checkbox'" ng-show="option.selectedOption"><span ng-repeat="option in option.selectedOption">{{option.name}}<span ng-if="!$last">, </span></span></span>
+				<span class="item-note" ng-if="option.type==='date' || option.type==='time' || option.type==='datetime'"> {{option.value}} </span>
+				<span class="item-note" ng-if="option.type==='text' || option.type==='textarea'"> {{option.value}} </span>
+				<i class="icon modifier-icon ion-chevron-right"></i>
+			</a>
+
+			<ionic-datepicker ng-repeat="option in productDetails.options"  class="item modifier-item item-icon-right" input-obj="datepickerObject"   ng-if="option.type==='date' || option.type==='datetime'" ng-click="openOptionModal(option)" >
+				{{option.name}}
+				<span class="item-note" ng-if="option.type==='date' || option.type==='time' || option.type==='datetime'"> {{option.value}} </span>
+				<i class="icon modifier-icon ion-chevron-right"></i>
+			</ionic-datepicker>
+			<ionic-timepicker ng-repeat="option in productDetails.options"  class="item modifier-item item-icon-right" input-obj="timePickerObject" ng-show="option.type==='time'" ng-click="openOptionModal(option)" >
+				{{option.name}}
+				<span class="item-note" ng-if="option.type==='date' || option.type==='time' || option.type==='datetime'"> {{option.value}} </span>
+				<i class="icon modifier-icon ion-chevron-right"></i>
+			</ionic-timepicker>
+			<br>
+			<a class="item details-item item-icon-right" nav-direction="forward" ui-sref="productDescription({productId: productDetails.product_id})">
+				Product Description
+				<i class="icon modifier-icon ion-chevron-right"></i>
+			</a>
+			<a class="item details-item item-icon-right" ui-sref="productSpecifications({productId: productDetails.product_id})">
+				Specifications
+				<i class="icon modifier-icon ion-chevron-right"></i>
+			</a>
+			<a class="item details-item item-icon-right" ui-sref="productReviews({productId: productDetails.product_id})">
+				User Reviews
+				<i class="icon modifier-icon ion-chevron-right"></i>
+			</a>
+			<br>
+
+
+			<div style="padding-top:140px"></div>
+		</ion-scroll>
+		<!--
+<tab-slide-box tab="0">
+<div class="tsb-icons header-color">
+<div class="tsb-ic-wrp">
+<ion-scroll direction="x" class="tsb-hscroll" delegate-handle="subHeaderSlideBox">
+<a href="javascript:;" class="ion-home1">Product</a>
+<a href="javascript:;" class="ion-ios-game-controller-b1" >Specifications</a>
+<a href="javascript:;" class="ion-email1">Description</a>
+<a href="javascript:;" class="ion-model-s1">Review</a>
+</ion-scroll>
+</div>
+</div>
+<ion-slide-box show-pager="false"
+on-slide-changed="slideHasChanged($index)"
+delegate-handle="subHeaderSlideBox"
+active-slide="myActiveSlide">
+<ion-slide class="product-slide" delegate-handle="productSlidePage" on-drag-left="enableSlide()">
+</ion-slide>
+<ion-slide class="specification-slide">
+<ion-scroll style="height:100%" delegate-handle="slide2Scroll" direction="y">
+<div style="padding-bottom:20px"></div>
+<div ng-repeat="group in productDetails.attribute_groups">
+<p class="group-name">{{group.name}}</p>
+<div class="panel">
+<div class="panel-body panel-attributes">
+<div ng-repeat="attribute in group.attribute">
+<div class="attribute-name">{{attribute.name}}</div>
+<div class="attribute-text">{{attribute.text}}</div>
+<hr ng-if="!$last"/>
+</div>
+</div>
+</div>
+</div>
+<div style="padding-top:140px"></div>
+</ion-scroll>
+</ion-slide>
+<ion-slide class="description-slide">
+<ion-scroll style="height:100%" direction="y">
+<div  ng-bind-html="productDetails.description" style="color:#fff; text-align:justify; padding: 15px"></div>
+<div style="padding-top:140px"></div>
+</ion-scroll>
+</ion-slide>
+<ion-slide class="review-slide" on-drag-right="enableSlide()">
+<ion-scroll style="height:100%" direction="y">
+<div style="padding-bottom:20px"></div>
+<div ng-if="reviews.length>0">
+<div class="row">
+<div class="col col-25 stars-average"><span style="font-size:22px">{{productRating}}</span><br><span>out of 5 stars</span></div>
+<div class="col col-50">
+<stars-rating class="product-review" ng-model="productRating" readonly="true"></star-rating><br/>
+</div>
+<div class="col col-25"><button class="button button-outline add-review-button" ng-click="openReviewModal()">Add review</button></div>
+</div>
+
+<div class="row" ng-repeat="star in stars.slice().reverse()">
+<div class="col col-20"><span style="color:white; font-size:13px " >{{star.rating}} stars </span></div>
+<div class="col col-50"><progress max="{{maxRatingValue}}" ng-value="{{star.value}}"></progress></div>
+<div class="col"><span style="color:white; " >{{star.value}}</span></div>
+</div>
+<br>
+<div ng-repeat="review in reviews">
+<div class="panel">
+<div class="panel-body panel-attributes">
+<div>
+<stars-rating ng-model="review.rating" readonly="true"></star-rating><br/>
+</div>
+<span>{{review.date_added}}</span>
+<span> by {{review.author}}</span>
+<div class="review-text">{{review.text}}</div>
+</div>
+</div>
+</div>
+</div>
+<div ng-if="reviews.length === 0">
+<h3>NO REVIEWS</h3>
+<button class="button button-outline add-review-button" ng-click="openReviewModal()">Add review</button>
+</div>
+<div style="padding-top:140px"></div>
+</ion-scroll>
+</ion-slide>
+</ion-slide-box>
+</tab-slide-box>
+-->
+
+
+	</ion-content>
+	<div class="footer-space"></div>
+
+</ion-view>

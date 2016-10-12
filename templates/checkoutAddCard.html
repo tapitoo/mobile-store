@@ -1,0 +1,38 @@
+<ion-view title='<div class=" appLogo"></div>'>
+	<ion-nav-buttons side="left">
+		<button  class="button button-icon ion-ios-arrow-back button-clear button-tap-area" nav-direction="back" ui-sref="checkout"></button>
+	</ion-nav-buttons>
+	<ion-content class="calm-bg cart-view">
+		<div class="header-space"></div>
+		<h3>Enter credit card details</h3>
+		<form name="myForm" >
+			<ion-list>
+				<div class="user-register">
+					<label class="item item-input item-floating-label">
+						<span class="input-label">Name</span>
+						<input type="text" placeholder="Name" ng-model="card.name" >
+					</label>
+					<label class="item item-input item-floating-label">
+						<span class="input-label">Card number</span>
+						<input type="text" placeholder="Card number" name="number" ng-model="card.cc_number" payments-validate="card" payments-format="card" payments-type-model="type" ng-class="myForm.number.$card.type"/>
+					</label>
+					<label class="item item-input item-floating-label">
+						<span class="input-label">Month / Year</span>
+						<input type="text" placeholder="Expiry" ng-model="card.expiry" payments-validate="expiry" payments-format="expiry" />
+					</label>
+					<label class="item item-input item-floating-label" ng-click="openModalZoneID()">
+						<span class="input-label">CVC</span>
+						<input type="text" placeholder="CVC" name="cvc" ng-model="card.cc_cvv2" payments-validate="cvc" payments-format="cvc" payments-type-model="type"/>
+					</label>
+					<br/>
+					<button class="button button-outline button-light button-custom" nav-direction="forward" ng-click="savePayment(myForm)"> PAY </button>
+				</div>
+			</ion-list>
+		</form>
+
+		<div class="footer-space"></div>
+	</ion-content>
+
+</ion-view>
+
+
